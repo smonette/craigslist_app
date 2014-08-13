@@ -1,12 +1,12 @@
 require "./scrapper"
 
-describe "scrapper" do 
+describe "scrapper" do
 
   before(:each) do
     # use @doc in your tests to avoid hitting the
-    #   craigslist url, which would be slow and 
+    #   craigslist url, which would be slow and
     #   problematic if you were blocked
-    @doc = Nokogiri::HTML(open("today.html"))
+    @doc = Nokogiri::HTML(open("pets.html"))
     @today = "Aug 12"
   end
 
@@ -28,5 +28,27 @@ describe "scrapper" do
   end
 
   describe "get_todays_rows" do
+    it "should return an array" do
+      rows = get_todays_rows(@doc, @today)
+      expect(rows.instance_of?(Array)).to be(true)
+    end
+
+    it "should select a row with a .row class" do
+
+    end
+
   end
+
+  describe "filter_links" do
+    it "should return an array" do
+      rows = filter_links(rows, @today)
+      expect(rows.instance_of?(Array)).to be(true)
+    end
+
+    it "should select rows only containing the desired search terms" do
+
+    end
+
+  end
+
 end

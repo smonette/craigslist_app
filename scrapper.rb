@@ -12,13 +12,16 @@ def filter_links(todays_rows)
   # that have "pup", "puppy", or "dog"
   # keywords
   results = []
-  term = (/(puppy|puppies|pup|doggies|dog)/i)
+  regex = (/(puppy|puppies|pup|doggies|dog)/i)
 
   todays_rows.each do |item|
-    if item.css('a').text.match(term)
+    if item.css('a').text.match(regex)
 
-     results.push(
-      {title: item.css('a').text, url: "http://sfbay.craigslist.org/pet"+item.css('.pl a').attr('href').text, posted: item.css('.date').text  })
+     results.push({
+        title: item.css('a').text,
+        url: "http://sfbay.craigslist.org"+item.css('.pl a').attr('href').text,
+        posted: item.css('.date').text
+      })
 
     end
   end
@@ -27,11 +30,6 @@ end
 
 
 def get_todays_rows(doc, date_str)
-  #  1.) open chrome console to look in inside p.row to see
-  #  if there is some internal date related content
-
-  #  2.) figure out the class that you'll need to select the
-  #   date from a row
   todays_rows = []
 
   rows = doc.css('.content p.row')
