@@ -18,7 +18,7 @@ def filter_links(todays_rows)
     if item.css('a').text.match(term)
 
      results.push(
-      {title: item.css('a').text, posted: item.css('.date').text  })
+      {title: item.css('a').text, url: "http://sfbay.craigslist.org/pet"+item.css('.pl a').attr('href').text, posted: item.css('.date').text  })
 
     end
   end
