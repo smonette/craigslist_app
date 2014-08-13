@@ -12,7 +12,7 @@ def filter_links(todays_rows)
   # that have "pup", "puppy", or "dog"
   # keywords
   results = []
-  term = (/(puppy|pup|doggies|dog)/i)
+  term = (/(puppy|puppies|pup|doggies|dog)/i)
 
   todays_rows.each do |item|
     if item.css('a').text.match(term)
@@ -42,9 +42,6 @@ def get_todays_rows(doc, date_str)
   end
   filter_links(todays_rows)
 end
-
-# get_todays_rows(page, "Aug 12")
-
 
 
 
